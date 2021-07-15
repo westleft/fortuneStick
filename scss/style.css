@@ -1,0 +1,163 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: 'Noto Serif TC', serif;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+}
+
+html, body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background-image: url("/image/background.jpg");
+  background-repeat: no-repeat;
+  background-position: centcer;
+  background-size: 100%;
+}
+
+body {
+  background: #1f1e28;
+  background: linear-gradient(106deg, #1f1e28 21%, rgba(238, 238, 238, 0) 66%);
+}
+
+.mainContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse;
+  width: 100%;
+  -webkit-box-flex: 8;
+      -ms-flex: 8;
+          flex: 8;
+  color: #fff;
+  padding: 0 12%;
+}
+
+.mainContainer h1 {
+  font-size: 100px;
+  font-weight: 900;
+  height: 80%;
+  -webkit-writing-mode: vertical-lr;
+      -ms-writing-mode: tb-lr;
+          writing-mode: vertical-lr;
+}
+
+.mainContainer .textBox {
+  width: 372px;
+  height: 60%;
+}
+
+.mainContainer .textBox h2 {
+  margin-top: 40px;
+  margin-bottom: 24px;
+}
+
+.mainContainer .textBox ul {
+  list-style: none;
+  font-size: 16px;
+}
+
+.mainContainer .textBox ul li {
+  margin-top: 4px;
+}
+
+.mainContainer .textBox .selectBox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.mainContainer .textBox .selectBox button {
+  height: 40px;
+  width: 112px;
+  background-color: rgba(255, 255, 255, 0);
+  font-size: 16px;
+  border: 1px solid #fff;
+  color: #fff;
+  margin-top: 16px;
+  cursor: pointer;
+}
+
+.mainContainer .textBox .selectBox button:hover {
+  background-color: #fff;
+  color: #000;
+}
+
+.mainContainer .textBox .selectBox .selectedBtn {
+  background-color: #fff;
+  color: #000;
+}
+
+.startSection {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  position: absolute;
+  height: 20%;
+  bottom: 0;
+  padding-left: 12%;
+  width: 100%;
+  background-color: #fff;
+  -webkit-transition: 10s;
+  transition: 10s;
+}
+
+.startSection .startBtn {
+  height: 55px;
+  width: 350px;
+  font-size: 24px;
+  font-weight: 900;
+  background-color: #fff;
+  border: 1px solid #000;
+  cursor: pointer;
+}
+
+.startSection .startBtn:hover {
+  background-color: #131616;
+  color: #fff;
+}
+
+.none {
+  opacity: 0;
+  -webkit-transition: 0.8s;
+  transition: 0.8s;
+}
+/*# sourceMappingURL=style.css.map */
