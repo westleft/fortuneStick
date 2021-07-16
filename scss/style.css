@@ -6,6 +6,10 @@
   font-family: 'Noto Serif TC', serif;
   -webkit-transition: 0.2s;
   transition: 0.2s;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 html, body {
@@ -136,8 +140,6 @@ body {
   padding-left: 12%;
   width: 100%;
   background-color: #fff;
-  -webkit-transition: 10s;
-  transition: 10s;
 }
 
 .startSection .startBtn {
@@ -150,14 +152,166 @@ body {
   cursor: pointer;
 }
 
-.startSection .startBtn:hover {
-  background-color: #131616;
+.resultSection {
+  height: 100%;
+  width: 100%;
+  background: radial-gradient(circle, rgba(98, 98, 98, 0) 0%, black 85%);
+  padding: 40px;
+  position: relative;
+  -webkit-transition: 0.8s;
+  transition: 0.8s;
+}
+
+.resultSection .introductionResult {
+  height: 100%;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border: solid 2px rgba(255, 255, 255, 0.3);
+  position: relative;
+}
+
+.resultSection .introductionResult .text1, .resultSection .introductionResult .text2, .resultSection .introductionResult .text3, .resultSection .introductionResult .text4 {
+  position: absolute;
+  font-size: 36px;
+  color: rgba(255, 255, 255, 0.301);
+  padding: 24px;
+  background-color: black;
+}
+
+.resultSection .introductionResult .text1 {
+  left: -40px;
+  top: -40px;
+}
+
+.resultSection .introductionResult .text2 {
+  right: -40px;
+  top: -40px;
+}
+
+.resultSection .introductionResult .text3 {
+  left: -40px;
+  bottom: -40px;
+}
+
+.resultSection .introductionResult .text4 {
+  right: -40px;
+  bottom: -40px;
+}
+
+.resultSection .introductionResult .info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   color: #fff;
+}
+
+.resultSection .introductionResult .info h2 {
+  font-size: 240px;
+}
+
+.resultSection .introductionResult .info p {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-size: 24px;
+  letter-spacing: 48px;
+  text-indent: 2rem;
+}
+
+.stickSection {
+  height: 100%;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse;
+}
+
+.stickSection .poem {
+  height: 80%;
+  width: 30%;
+  color: white;
+  -webkit-writing-mode: vertical-rl;
+      -ms-writing-mode: tb-rl;
+          writing-mode: vertical-rl;
+}
+
+.stickSection .poem p {
+  font-weight: 900;
+  font-size: 40px;
+  line-height: 80px;
+}
+
+.stickSection .poem span {
+  font-size: 16px;
+}
+
+.stickSection .resultText {
+  color: #fff;
+  width: 352px;
+  height: 60%;
+}
+
+.stickSection .resultText h2 {
+  font-size: 40px;
+  margin-top: 40px;
+}
+
+.stickSection .resultText p {
+  font-size: 16px;
+  margin-top: 24px;
+}
+
+.stickSection .resultText button {
+  height: 55px;
+  width: 100%;
+  font-size: 24px;
+  margin-top: 40px;
+  border: 1px solid #FFFFFF;
+  background-color: rgba(0, 0, 0, 0);
+  color: #fff;
+  cursor: pointer;
 }
 
 .none {
   opacity: 0;
-  -webkit-transition: 0.8s;
-  transition: 0.8s;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.displayNone {
+  display: none;
 }
 /*# sourceMappingURL=style.css.map */
