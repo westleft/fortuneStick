@@ -25,6 +25,44 @@ window.onload = function () {
     }
 }
 
+function getRandom(x) {
+    return Math.floor(Math.random() * x);
+}
+
+function renderText() {
+    let num = getRandom(4)
+    
+
+    info.innerHTML = `<p>第${data[num].number}籤</p>
+                      <h2>${data[num].name}</h2>
+                      <p>【${data[num].stick}】</p>`
+
+    stickSection.innerHTML =
+        `<div class="poem">
+            <span>第${data[num].number} 籤 ︻ ${data[num].stick} ︼ ${data[num].name}</span>
+            <p>${data[num].poem}</p>
+            <img src="${data[num].img}">
+        </div>
+        <div class="resultText">
+            
+            <h2>聖意</h2>
+            <p>${data[num].content}</p>
+            <h2>解曰</h2>
+            <p>${data[num].content2}</p>
+            <button class="againBtn" onclick="again()">重新求籤</button>
+        </div>`
+
+        //判斷有沒有圖片
+        let img = document.querySelector('.poem img')
+
+        if(data[num].img){
+            img.style.display = 'flex'
+        }else{
+            img.style.display = 'none'
+        }
+
+}
+
 startBtn.addEventListener('click', function () {
     renderText()
     animation()
@@ -69,7 +107,7 @@ function setAttribute(item) {
     item.classList.add('selectedBtn')
 }
 
-function animation() {
+function animation(){
     startSection.classList.add('none')
     mainContainer.classList.add('none')
 
@@ -103,54 +141,4 @@ function animation() {
     setTimeout(function () {
         stickSection.classList.remove('none')
     }, 4100)
-}
-
-function getRandom(x) {
-    return Math.floor(Math.random() * x);
-}
-
-function renderText() {
-    let num = getRandom(4)
-
-    info.innerHTML = `<p>第${data[num].number}籤</p>
-                      <h2>${data[num].name}</h2>
-                      <p>【${data[num].stick}】</p>`
-
-    stickSection.innerHTML =
-        `<div class="poem">
-            <span>第${data[num].number} 籤 ︻ ${data[num].stick} ︼ ${data[num].name}</span>
-            <p>${data[num].poem}</p>
-            <img src="${data[num].img}">
-        </div>
-        <div class="resultText">
-            
-            <h2>聖意</h2>
-            <p>${data[num].content}</p>
-            <h2>解曰</h2>
-            <p>${data[num].content2}</p>
-            <button class="againBtn" onclick="again()">重新求籤</button>
-        </div>`
-
-    //判斷有沒有圖片
-    let img = document.querySelector('.poem img')
-
-    if (data[num].img) {
-        img.style.display = 'flex'
-    } else {
-        img.style.display = 'none'
-    }
-
-}
-
-window.onload = function () {
-    setInterval("toggleSound()", 1500);
-}
-
-function toggleSound() {
-    let music = document.getElementById("vd")  
-
-    if (music.paused) { 
-        music.paused = false;
-        music.play() 
-    }
 }
