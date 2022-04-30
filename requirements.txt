@@ -1,0 +1,4 @@
+fastAPI
+uvicorn
+python-dotenv
+azure-data-tables
