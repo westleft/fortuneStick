@@ -1,6 +1,6 @@
 <script setup>
 import Result from "./components/Result.vue";
-import { ref } from "vue";
+import { onMounted, ref } from "vue";
 const isShow = ref(false);
 
 const handShow = () => {
@@ -8,11 +8,24 @@ const handShow = () => {
 };
 
 const close = () => {
-    console.log('cowba')
-    
-    isShow.value = false
-}
+  isShow.value = false;
+};
 
+const typeData = [
+  "網站上線",
+  "感情婚姻",
+  "事業工作",
+  "家庭生活",
+  "求財運勢",
+  "參選總統",
+];
+// 先點按鈕才可抽籤
+const clickabled = ref(true);
+const index = ref();
+const selectedIndex = (idx) => {
+  index.value = idx;
+  clickabled.value = false;
+};
 </script>
 <template>
   <div id="main">
@@ -29,12 +42,14 @@ const close = () => {
             </ul>
             <h2>求籤類別</h2>
             <div class="selectBox">
-              <button data-sec="unselected">網站上線</button>
-              <button data-sec="unselected">感情婚姻</button>
-              <button data-sec="unselected">事業工作</button>
-              <button data-sec="unselected">家庭生活</button>
-              <button data-sec="unselected">求財運勢</button>
-              <button data-sec="unselected">參選總統</button>
+              <button
+                v-for="(item, idx) in typeData"
+                :key="item"
+                :class="{ selected: index === idx }"
+                @click="selectedIndex(idx)"
+              >
+                {{ item }}
+              </button>
             </div>
           </div>
         </div>
@@ -42,7 +57,12 @@ const close = () => {
       <Transition name="fade">
         <div class="startSection" v-if="!isShow">
           <!-- disabled="true"  -->
-          <button class="startBtn" @click="handShow">開始求籤</button>
+          <button
+            :class="['startBtn', { clickabled: clickabled }]"
+            @click="handShow"
+          >
+            開始求籤
+          </button>
         </div>
       </Transition>
       <Transition>
@@ -81,10 +101,13 @@ body {
     rgba(31, 30, 40, 1) 21%,
     rgba(238, 238, 238, 0) 66%
   );
+  @include mobile {
+        background: linear-gradient(106deg, rgb(31, 30, 40) 50%, rgba(238, 238, 238, 0) 96%);
+  }
 }
 .overlay {
-    @include size(100vh, 100vw);
-      background: radial-gradient(
+  @include size(100vh, 100vw);
+  background: radial-gradient(
     circle,
     rgba(98, 98, 98, 0) 0%,
     rgba(0, 0, 0, 1) 85%
@@ -96,24 +119,47 @@ body {
   width: 100%;
   color: #fff;
   padding: 0 12%;
+  @include mobile {
+    flex-direction: column;
+    width: 100%;
+    height: 80vh;
+    padding: 0 4%;
+  }
   h1 {
     font-size: 6vw;
     font-weight: 900;
     height: 80%;
     padding: 4% 0;
     writing-mode: vertical-lr;
+    @include mobile {
+          padding: 12% 0 4% 0;
+      height: 40%;
+      width: 100%;
+      writing-mode: initial;
+      font-size: 12vw;
+      text-align: center;
+    }
   }
   .textBox {
     height: 60%;
+    @include mobile {
+          height: 100%;
+        }
     h2 {
       margin: 4% 0;
       font-size: 1.8vw;
+      @include mobile {
+          font-size: 5vw
+        }
     }
     ul {
       list-style: none;
       font-size: 1vw;
       li {
         line-height: 180%;
+        @include mobile {
+          font-size: 3.5vw
+        }
       }
     }
     .selectBox {
@@ -137,6 +183,10 @@ body {
         background-color: #fff;
         color: #000;
       }
+      .selected {
+        background-color: #fff;
+        color: black;
+      }
     }
   }
 }
@@ -150,18 +200,34 @@ body {
   width: 100%;
   background-color: #fff;
   z-index: 2;
+  @include mobile {
+    @include flexCenter(center, center);
+    height: 12%;
+    padding: 0;
+  }
   button.startBtn {
-    padding: 1% 8%;
+    padding: 1% 10%;
     font-size: 1.5vw;
     font-weight: 900;
     background-color: #fff;
     border: 1px solid #000;
     cursor: pointer;
+    transition: 0.4s;
+    @include mobile {
+      font-size: 4vw;
+    }
   }
+
   // .startBtn:hover{
   //     background-color: rgb(19,22,22);
   //     color: #fff;
   // }
+  .clickabled {
+    cursor: not-allowed !important;
+    background-color: rgb(232, 232, 232) !important;
+    color: rgb(87, 87, 87);
+    border: solid 1px rgb(87, 87, 87);
+  }
 }
 
 /* we will explain what these classes do next! */

@@ -1,10 +1,28 @@
 <script setup>
-import { onMounted, ref } from '@vue/runtime-core';
-const emit = defineEmits(['close'])
+import axios from "axios";
+import { onMounted, ref } from "@vue/runtime-core";
+const emit = defineEmits(["close"]);
 const isShow = ref(true);
+const isload = ref(true);
+const data = ref();
+
 onMounted(() => {
   showResult();
+  getData()
 });
+
+const getData = () => {
+  axios
+    .post("http://127.0.0.1:8000/stick")
+    .then((res) => {
+      data.value = res.data;
+      isload.value = false;
+      editPoem();
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
 
 const showResult = () => {
   setTimeout(() => {
@@ -12,13 +30,19 @@ const showResult = () => {
   }, 3000);
 };
 
+const poem = ref();
+const editPoem = () => {
+  poem.value = data.value.poem.split("<br>");
+  console.log(poem.value);
+};
+
 // 關閉視窗
 const close = () => {
-    emit('close')
-}
+  emit("close");
+};
 </script>
 <template>
-  <div class="resultSection none displayNone">
+  <div class="resultSection none displayNone" v-if="!isload">
     <div class="introductionResult">
       <p class="text1">線</p>
       <p class="text2">上</p>
@@ -26,29 +50,26 @@ const close = () => {
       <p class="text4">籤</p>
       <Transition name="fade">
         <div class="info none displayNone" v-if="isShow">
-          <p>第六十八籤</p>
-          <h2>中吉</h2>
-          <p>【更新】</p>
+          <p>第{{ data.number }}籤</p>
+          <h2>{{ data.name }}</h2>
+          <p>【{{ data.stick }}】</p>
         </div>
       </Transition>
       <Transition>
         <div class="stickSection none displayNone" v-if="!isShow">
           <div class="poem">
-            <span>第六十八籤 ︻ 甲甲 ︼ 大吉</span>
-            <p>
-              巍巍獨步向雲間<br />玉殿千官第一班<br />富貴榮華天付汝<br />福如東海壽如山
-            </p>
-            <img src="${data[num].img}" />
+            <span
+              >第{{ data.number }}籤 ︻ {{ data.stick }} ︼
+              {{ data.name }}</span
+            >
+            <p v-for="text in poem" :key="text">{{ text }} <br /></p>
+            <img v-if="data.img" src="../assets/image/eight.jpeg" />
           </div>
           <div class="resultText">
             <h2>聖意</h2>
-            <p>
-              功名遂。福祿全。訟得理。病即痊。<br />桑麻熟。婚姻聯。孕生子。行人還。
-            </p>
+            <p>{{data.content.replaceAll('<br />', '')}}</p>
             <h2>解曰</h2>
-            <p>
-              此籤謀望通達。無不遂意。但各有所主。官員占茲。有超越之喜。士人有功名之望。庶人不吉。若謀望。求財者。有名無實。為語多空虛也。
-            </p>
+            <p>{{data.content2.replaceAll('<br />', '')}}</p>
             <button class="againBtn" @click="close">重新求籤</button>
           </div>
         </div>
@@ -129,22 +150,35 @@ const close = () => {
   @include flexCenter(center, space-around);
   flex-direction: row-reverse;
   transition: 1s;
+  @include mobile {
+    flex-direction: column;
+  }
   .poem {
     @include size(80%, 30%);
     color: white;
     writing-mode: vertical-rl;
+    @include mobile {
+      @include flexCenter(center, center);
+      flex-direction: column;
+    }
     p {
       font-weight: 900;
       font-size: 2.5vw;
       line-height: 200%;
       letter-spacing: 8px;
+      @include mobile {
+        font-size: 6vw;
+      }
     }
     span {
       font-size: 1vw;
       letter-spacing: 0.2vw;
+      @include mobile {
+        font-size: 3vw;
+      }
     }
     img {
-      @include size(180px, auto);
+      width: 12vw;
       position: absolute;
       right: 15%;
       bottom: 5%;
@@ -154,6 +188,9 @@ const close = () => {
     color: #fff;
     width: 24%;
     height: 60%;
+    @include mobile {
+      width: 90%;
+    }
     h2 {
       font-size: 2.2vw;
       margin-top: 8%;
@@ -170,6 +207,10 @@ const close = () => {
       background-color: rgba(0, 0, 0, 0);
       color: #fff;
       cursor: pointer;
+      @include mobile {
+        width: 100%;
+        margin: 16% 0;
+      }
     }
   }
 }
