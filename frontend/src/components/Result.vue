@@ -13,7 +13,7 @@ onMounted(() => {
 
 const getData = () => {
   axios
-    .post("http://127.0.0.1:8000/stick")
+    .post("https://fortunestick.azurewebsites.net/stick")
     .then((res) => {
       data.value = res.data;
       isload.value = false;
@@ -67,9 +67,9 @@ const close = () => {
           </div>
           <div class="resultText">
             <h2>聖意</h2>
-            <p>{{data.content.replaceAll('<br />', '')}}</p>
+            <p>{{data.content.replaceAll('<br>', '')}}</p>
             <h2>解曰</h2>
-            <p>{{data.content2.replaceAll('<br />', '')}}</p>
+            <p>{{data.content2.replaceAll('<br>', '')}}</p>
             <button class="againBtn" @click="close">重新求籤</button>
           </div>
         </div>

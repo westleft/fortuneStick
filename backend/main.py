@@ -10,8 +10,7 @@ load_dotenv()
 app = FastAPI()
 
 origins = [
-   "http://localhost:3000",
-   "https://westleft.github.io/fortuneStick/"
+   "https://westleft.github.io"
 ]
 
 app.add_middleware(
