@@ -6,10 +6,11 @@
 
 連結：https://westleft.github.io/fortuneStick/
 
-設計稿由六角學院所提供，詳細請參考[新手 JS 地下城](https://courses.hexschool.com/p/javascript-js)。<br>
-初期使用 Vanilla JS，近期為了練習改成 Vue，順便用 FastAPI + Azure Storage 做一個簡易 API，每次隨機回傳一組詩籤，前端再渲染到網頁上。<br>
-這次重構也順便把手機板的 CSS 補起來，詩籤部分一樣，多抽幾次會有意想不到的驚喜。<br>
+設計稿由六角學院所提供，詳細請參考[新手 JS 地下城](https://courses.hexschool.com/p/javascript-js)。
 
+初期使用 Vanilla JS，近期為了練習改成 Vue，順便用 FastAPI + Azure Storage 做一個簡易 API，每次隨機回傳一組詩籤，前端再渲染到網頁上。
+
+這次重構也順便把手機板的 CSS 補起來，詩籤部分一樣，多抽幾次會有意想不到的驚喜。
 
 
 ## 參考資料
