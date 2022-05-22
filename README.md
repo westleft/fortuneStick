@@ -5,6 +5,7 @@
 ![](https://i.imgur.com/xzh1oqX.jpg)
 
 連結：https://westleft.github.io/fortuneStick/
+(※ 目前已暫時將 Azure 服務關閉，所以沒辦法正常運行)
 
 設計稿由六角學院所提供，詳細請參考[新手 JS 地下城](https://courses.hexschool.com/p/javascript-js)。
 
